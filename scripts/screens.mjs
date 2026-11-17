@@ -15,8 +15,9 @@ import { readFile, mkdir, rm, cp, stat, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { opzioniChromium } from './chromium.mjs';
+import { basePathLocale } from './base.mjs';
 
-const BASE_PATH = '/ImprontaAccelerator';
+const BASE_PATH = basePathLocale();
 const OUT_ROOT = 'docs/redesign-v2/screens';
 const VIEWPORTS = [
   { name: '1440', width: 1440, height: 900 },

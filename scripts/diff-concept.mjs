@@ -16,8 +16,9 @@ import path from 'node:path';
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
 import { opzioniChromium } from './chromium.mjs';
+import { basePathLocale } from './base.mjs';
 
-const BASE_PATH = '/ImprontaAccelerator';
+const BASE_PATH = basePathLocale();
 const OUT = 'docs/redesign-v2/diff';
 const VIEWPORTS = [
   { name: '1440', width: 1440, height: 900 },
