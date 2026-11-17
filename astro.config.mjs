@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { basePathLocale, siteUrlLocale } from './scripts/base.mjs';
 
 /**
  * Sito e base path sono guidati da variabili d'ambiente, così il passaggio da
@@ -17,11 +18,13 @@ import sitemap from '@astrojs/sitemap';
  * "variabile assente" e "variabile vuota" è tutto.
  *
  * Variabile assente (sviluppo in locale, `npm run diff`, `npm run screens`):
- * si ricade sul project site di GitHub. Variabile vuota (CI con dominio
+ * si ricade sul project site di chi possiede la repo, dedotto dal remote git
+ * invece che scritto a mano — cosi' un cambio di nome o di proprietario non
+ * lascia indietro una stringa sbagliata. Variabile vuota (CI con dominio
  * custom): base alla radice.
  */
-const SITE_URL = process.env.SITE_URL ?? 'https://alessandro562.github.io';
-const BASE_PATH = process.env.BASE_PATH ?? '/ImprontaAccelerator';
+const SITE_URL = process.env.SITE_URL ?? siteUrlLocale();
+const BASE_PATH = process.env.BASE_PATH ?? basePathLocale();
 
 export default defineConfig({
   site: SITE_URL,
